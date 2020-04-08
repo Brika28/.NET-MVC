@@ -112,3 +112,4 @@ D:\VsProjekti\AlgebraApp\AlgebraSchoolApp\obj\Debug\AlgebraSchoolApp.csproj.Core
 D:\VsProjekti\AlgebraApp\AlgebraSchoolApp\obj\Debug\AlgebraSchoolApp.csproj.CopyComplete
 D:\VsProjekti\AlgebraApp\AlgebraSchoolApp\obj\Debug\AlgebraSchoolApp.dll
 D:\VsProjekti\AlgebraApp\AlgebraSchoolApp\obj\Debug\AlgebraSchoolApp.pdb
+D:\VsProjekti\AlgebraApp\AlgebraSchoolApp\obj\Debug\AlgebraSchoolApp.Migrations.NamesAdded.resources

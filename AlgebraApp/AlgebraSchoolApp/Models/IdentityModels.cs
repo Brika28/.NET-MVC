@@ -18,7 +18,8 @@ namespace AlgebraSchoolApp.Models
             // Add custom user claims here
             return userIdentity;
         }
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public int? EmployeeId { get; set; }
         [ForeignKey("EmployeeId")]
         public Employee Employee { get; set; }

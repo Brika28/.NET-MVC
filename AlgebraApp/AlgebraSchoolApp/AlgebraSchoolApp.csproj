@@ -185,6 +185,10 @@
     <Compile Include="Migrations\202003151540105_relationAdded.Designer.cs">
       <DependentUpon>202003151540105_relationAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004081550015_NamesAdded.cs" />
+    <Compile Include="Migrations\202004081550015_NamesAdded.designer.cs">
+      <DependentUpon>202004081550015_NamesAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CourseCustomModel.cs" />
@@ -385,6 +389,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003151540105_relationAdded.resx">
       <DependentUpon>202003151540105_relationAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004081550015_NamesAdded.resx">
+      <DependentUpon>202004081550015_NamesAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
