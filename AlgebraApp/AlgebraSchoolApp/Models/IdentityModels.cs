@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -18,9 +19,18 @@ namespace AlgebraSchoolApp.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        [Display(Name = "Ime")]
         public string FirstName { get; set; }
+        
+        [Display(Name = "Prezime")]
         public string LastName { get; set; }
+
+        [Display(Name ="Korinsičko ime")]
+        public override string UserName { get; set; }
+
         public int? EmployeeId { get; set; }
+        
         [ForeignKey("EmployeeId")]
         public Employee Employee { get; set; }
     }
