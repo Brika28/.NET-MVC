@@ -72,14 +72,14 @@ namespace AlgebraSchoolApp.Models
         [Display(Name = "Prezime")]
         public string LastName { get; set; }
 
-
         [Required]
         [EmailAddress]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
+
         [Required]
-        [StringLength(100, ErrorMessage = " {0} mora bit {2} znaka dugo.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = " {0} mora bit {2} znaka duga.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Lozinka")]
         public string Password { get; set; }
