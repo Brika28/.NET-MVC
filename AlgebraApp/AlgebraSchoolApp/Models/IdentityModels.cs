@@ -39,7 +39,5 @@ namespace AlgebraSchoolApp.Models
         {
             return new ApplicationDbContext();
         }
-
-
     }
 }

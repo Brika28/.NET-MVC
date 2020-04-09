@@ -1,0 +1,21 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+@{
+    ViewBag.Title = "Kreiraj ulogu";
+}
+<h2>Kreiraj novu ulogu</h2>
+@using (Html.BeginForm())
+{
+    <table class="table table-bordered table-bordered">
+        <tr>
+            <td>
+                Naziv
+            </td>
+            <td>
+                @Html.EditorFor(m => m.Name)
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Kreiraj ulogu" class="btn btn-primary"/>
+    <input type="button" class="btn btn-primary" value="Nazad" onclick="location.href='@Url.Action("Index", "Role")'" />
+
+}  

@@ -5,11 +5,8 @@
 }
 
 <h2>Tečajevi</h2>
-<hr />
 
-<input type="button" class="btn btn-primary" value="Kreiraj novi tečaj" onclick="location.href='@Url.Action("Create", "Course")'" />
-
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>
@@ -57,3 +54,4 @@
         }
     </tbody>
 </table>
+<input type="button" class="btn btn-primary" value="Kreiraj novi tečaj" onclick="location.href='@Url.Action("Create", "Course")'" />

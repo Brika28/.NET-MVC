@@ -65,6 +65,15 @@ namespace AlgebraSchoolApp.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Ime")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Prezime")]
+        public string LastName { get; set; }
+
+
+        [Required]
         [EmailAddress]
         [Display(Name = "E-mail")]
         public string Email { get; set; }

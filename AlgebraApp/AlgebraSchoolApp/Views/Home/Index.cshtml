@@ -9,8 +9,14 @@
     <input type="button" class="btn btn-primary" value="Prijava" onclick="location.href='@Url.Action("Create", "Booking")'" />
 </p>
 
-<h2> Svi tečajevi</h2>
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td colspan="100" style="text-align: center;">
+                <h2>Svi tečajevi</h2>
+            </td>
+        </tr>
+    </thead>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CourseName)
@@ -33,8 +39,15 @@
     }
 </table>
 
-<h2>Slobodni tečajevi</h2>
-<table class="table table-striped">
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td colspan="100" style="text-align: center;">
+               <h2>Slobodni tečajevi</h2>
+            </td>
+        </tr>
+    </thead>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CourseName)
