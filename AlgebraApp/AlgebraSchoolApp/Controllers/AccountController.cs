@@ -152,11 +152,8 @@ namespace AlgebraSchoolApp.Controllers
         {
             if (ModelState.IsValid)
             {
-<<<<<<< Updated upstream
                 var user = new ApplicationUser { FirstName = model.FirstName, LastName = model.LastName, UserName = model.Email, Email = model.Email };
-=======
-                var user = new ApplicationUser { FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, UserName=model.Email};
->>>>>>> Stashed changes
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
