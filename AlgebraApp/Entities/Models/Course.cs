@@ -29,6 +29,7 @@ namespace Entities
         [Display(Name = "Zauzet")]
         public bool Full { get; set; }
 
+        
         public ICollection<Booking> Booking { get; set; }
     }
 }

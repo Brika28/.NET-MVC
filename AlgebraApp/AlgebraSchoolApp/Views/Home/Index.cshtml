@@ -3,6 +3,15 @@
     ViewBag.Title = "AlgebraSchoolApp";
 }
 
+@using (Html.BeginForm())
+{
+    <p>
+        Pretraga: @Html.TextBox("SearchString")
+        <input type="submit" value="Traži" class="btn btn-primary" />
+        <input type="button" class="btn btn-primary" value="Reset" onclick="location.href='@Url.Action("Index", "Home")'" />
+    </p>
+}
+
 <h2>Dobrodošli!</h2>
 <p>
     Da bi se prijavili na neki od naših tečajeva kliknite na link prijave:
@@ -44,7 +53,7 @@
     <thead>
         <tr>
             <td colspan="100" style="text-align: center;">
-               <h2>Slobodni tečajevi</h2>
+                <h2>Slobodni tečajevi</h2>
             </td>
         </tr>
     </thead>
@@ -61,16 +70,16 @@
     </tr>
     @foreach (var item in Model.Where(x => x.Full == false))
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.CourseName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Date)
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+        </tr>
     }
 </table>
