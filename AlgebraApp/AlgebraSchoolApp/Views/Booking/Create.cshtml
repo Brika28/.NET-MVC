@@ -1,10 +1,14 @@
 ﻿@model Entities.Booking
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Prijava";
 }
 
-<h2>Create</h2>
+<h2>Prijava na tečaj</h2>
+<p>
+    Izaberite tečaj iz padajućeg izbornika u obrascu. <br />
+    Prikazani su samo tečajevi koji su slobodni.
+</p>
 
 
 @using (Html.BeginForm())
@@ -12,7 +16,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Booking</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -60,7 +63,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CourseId,"CourseName",htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CourseId, "Naziv tečaja", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(x => x.CourseId,
                    (SelectList)ViewBag.Courses, "-- Tečaj --",

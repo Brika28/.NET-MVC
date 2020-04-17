@@ -15,24 +15,16 @@ namespace AlgebraSchoolApp.Controllers
     {
         private CoursesRepo cr = new CoursesRepo();
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString, DateTime? date)
         {
             IEnumerable<Course> courses = cr.GetCourses();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                courses = courses.Where(c => c.CourseName.Contains(searchString));
+            }
+
             return View(courses);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace AlgebraSchoolApp.Models
 {
@@ -48,10 +49,13 @@ namespace AlgebraSchoolApp.Models
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
+
+
+        
+        [Display(Name = "Korisničko ime")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +68,9 @@ namespace AlgebraSchoolApp.Models
 
     public class RegisterViewModel
     {
+
+        public string UserName { get; set; }
+
         [Required]
         [Display(Name = "Ime")]
         public string FirstName { get; set; }
@@ -88,6 +95,8 @@ namespace AlgebraSchoolApp.Models
         [Display(Name = "Potvrdi lozinku")]
         [Compare("Password", ErrorMessage = "Lozinka i potvrdna lozinka se ne podudaraju")]
         public string ConfirmPassword { get; set; }
+
+
     }
 
     public class ResetPasswordViewModel
