@@ -49,27 +49,20 @@ namespace AlgebraSchoolApp.Models
 
     public class LoginViewModel
     {
+
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
-
-
-        
-        [Display(Name = "Korisničko ime")]
-        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Lozinka")]
         public string Password { get; set; }
 
-        [Display(Name = "Zapamti me?")]
-        public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
-
-        public string UserName { get; set; }
 
         [Required]
         [Display(Name = "Ime")]
