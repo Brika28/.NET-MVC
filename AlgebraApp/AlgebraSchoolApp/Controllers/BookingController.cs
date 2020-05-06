@@ -13,6 +13,7 @@ using System.Data.Entity;
 
 namespace AlgebraSchoolApp.Controllers
 {
+    [Authorize(Roles="Admin,Zaposlenik")]
     public class BookingController : Controller
     {
 
@@ -21,10 +22,9 @@ namespace AlgebraSchoolApp.Controllers
 
         public ActionResult Index()
         {
-
             return View(db.Bookings.Include(x => x.Course));
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Create()
         {
@@ -32,17 +32,20 @@ namespace AlgebraSchoolApp.Controllers
             return View(new Booking());
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Booking booking)
         {
+            ViewBag.Courses = new SelectList(db.Courses.Where(x => x.Full == false), "CourseId", "CourseName");
+
             if (ModelState.IsValid)
             {
                 booking.DateOfBooking = DateTime.Now.Date;
                 br.CreateBooking(booking);
-                return RedirectToAction("Index");
+                var book = db.Bookings.Include(x => x.Course).Where(x => x.BookingId == booking.BookingId);               
+                return View("CreatedBooking",book);
             }
-            ViewBag.Courses = new SelectList(db.Courses.Where(x => x.Full == false), "CourseId", "CourseName");
             return View(booking);
         }
 

@@ -1,13 +1,17 @@
 ﻿using AlgebraSchoolApp.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace AlgebraSchoolApp.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class RoleController : Controller
     {
 
@@ -36,6 +40,31 @@ namespace AlgebraSchoolApp.Controllers
         public ActionResult Create(IdentityRole role)
         {
             context.Roles.Add(role);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(IdentityRole role)
+        {
+            if (role == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var RoleMan = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            var roleId = role.Id;
+            role = RoleMan.FindById(roleId);
+            return View(role);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(string id)
+        {
+            var RoleMan = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            var role = RoleMan.FindById(id);
+            RoleMan.Delete(role);
             context.SaveChanges();
             return RedirectToAction("Index");
         }

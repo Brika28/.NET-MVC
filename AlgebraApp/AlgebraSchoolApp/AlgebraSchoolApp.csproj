@@ -195,6 +195,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CourseCustomModel.cs" />
+    <Compile Include="Models\EmployeeViewModel.cs" />
+    <Compile Include="Models\GroupedUserViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -376,9 +378,12 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\AddEmployee.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\Booking\CreatedBooking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

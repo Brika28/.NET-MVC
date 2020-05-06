@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,9 +15,9 @@ using System.Web.Security;
 
 namespace AlgebraSchoolApp.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class UsersController : Controller
     {
-        private EmployesRepo er = new EmployesRepo();
 
         ApplicationDbContext db;
 
@@ -76,17 +77,31 @@ namespace AlgebraSchoolApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddEmployee(ApplicationUser user)
         {
-
-            Employee employee = new Employee();
-
-            employee = new Employee { FirstName = user.FirstName, LastName = user.LastName, UserName = user.UserName};
+            ApplicationDbContext db = new ApplicationDbContext();
 
             if (ModelState.IsValid)
             {
-                db.Employees.Add(employee);
+                var roleStore = new RoleStore<IdentityRole>(db);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                var userStore = new UserStore<ApplicationUser>(db);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+
+                if (userManager.IsInRole(user.Id,"Zaposlenik"))
+                {
+                    ModelState.AddModelError("", "Korisnik je vec dodjeljen u zaposlenika.");
+                    return View(user);
+                }
+                if (userManager.IsInRole(user.Id, "Admin"))
+                {
+                    ModelState.AddModelError("", "Korisnik je vec Admin.");
+                    return View(user);
+                }
+                
+                userManager.AddToRole(user.Id, "Zaposlenik");
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(user);
         }
     }

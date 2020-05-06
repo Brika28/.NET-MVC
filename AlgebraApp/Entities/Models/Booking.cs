@@ -47,8 +47,8 @@ namespace Entities
         [Display(Name ="Status upisa")]
         public string Status { get; set; }
 
-        public int CourseId { get; set; }
 
+        public int CourseId { get; set; }
         
         public Course Course { get; set; }
 

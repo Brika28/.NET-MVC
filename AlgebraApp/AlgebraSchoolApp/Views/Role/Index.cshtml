@@ -17,6 +17,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
+            <td>
+                @Html.ActionLink("Obriši", "Delete", new { id = item.Id })
+            </td>
         </tr>
     }
 </table>

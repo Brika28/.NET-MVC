@@ -106,4 +106,3 @@ D:\VsProjekti\AlgebraApp\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.ca
 D:\VsProjekti\AlgebraApp\Entities\obj\Debug\Entities.csproj.CopyComplete
 D:\VsProjekti\AlgebraApp\Entities\obj\Debug\Entities.dll
 D:\VsProjekti\AlgebraApp\Entities\obj\Debug\Entities.pdb
-D:\VsProjekti\AlgebraApp\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
