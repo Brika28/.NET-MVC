@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Entities;
+using Entities.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -20,19 +22,14 @@ namespace AlgebraSchoolApp.Models
             return userIdentity;
         }
 
-        [Display(Name = "Ime")]
+        [Display(Name ="Ime")]
         public string FirstName { get; set; }
-        
-        [Display(Name = "Prezime")]
+
+        [Display(Name ="Prezime")]
         public string LastName { get; set; }
 
-        [Display(Name ="Korinsičko ime")]
+        [Display(Name ="Korisničko ime")]
         public override string UserName { get; set; }
-
-        public int? EmployeeId { get; set; }
-        
-        [ForeignKey("EmployeeId")]
-        public Employee Employee { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -43,7 +40,6 @@ namespace AlgebraSchoolApp.Models
         }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        public DbSet<Employee> Employees { get; set; }
 
         public static ApplicationDbContext Create()
         {

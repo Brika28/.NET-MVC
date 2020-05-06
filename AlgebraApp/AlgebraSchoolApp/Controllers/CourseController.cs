@@ -12,6 +12,7 @@ using AlgebraSchoolApp.Models;
 
 namespace AlgebraSchoolApp.Controllers
 {
+    [Authorize(Roles = "Admin,Zaposlenik")]
     public class CourseController : Controller
     {
         private CoursesRepo cr = new CoursesRepo();
@@ -32,18 +33,18 @@ namespace AlgebraSchoolApp.Controllers
                     Description = course.Description,
                     Date = course.Date.Date,
                     Full = course.Full,
-                    BookingCount =  bookingCount
+                    BookingCount = bookingCount
                 });
             }
-           return View(courseCustomModel);
+            return View(courseCustomModel);
         }
-
+        
         [HttpGet]
         public ActionResult Create()
         {
             return View(new Course());
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Course course)
@@ -79,7 +80,7 @@ namespace AlgebraSchoolApp.Controllers
         public ActionResult Edit(Course course)
         {
             if (ModelState.IsValid)
-            { 
+            {
                 cr.UpdateCourse(course);
                 return RedirectToAction("Index");
             }

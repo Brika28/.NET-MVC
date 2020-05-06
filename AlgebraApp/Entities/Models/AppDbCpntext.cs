@@ -16,6 +16,5 @@ namespace Entities.Models
         }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        public DbSet<Employee> Employees { get; set; }
     }
 }
