@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.WebPages;
 
 namespace AlgebraSchoolApp.Controllers
 {
@@ -37,11 +38,22 @@ namespace AlgebraSchoolApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(IdentityRole role)
         {
-            context.Roles.Add(role);
-            context.SaveChanges();
-            return RedirectToAction("Index");
+         
+            if (ModelState.IsValid)
+            {
+                if (role.Name.IsEmpty())
+                {
+                    ModelState.AddModelError("", "Niste unjeli naziv uloge");
+                    return View(role);
+                }
+                context.Roles.Add(role);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(role);
         }
 
         [HttpGet]

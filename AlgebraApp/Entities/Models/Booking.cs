@@ -18,28 +18,28 @@ namespace Entities
         [Display(Name ="Datum rezervacije")]
         public DateTime DateOfBooking { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Ime je obavezno!")]
         [StringLength(150, MinimumLength = 2)]
         [Display(Name ="Ime")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Prezime je obavezno!")]
         [StringLength(150, MinimumLength = 2)]
         [Display(Name ="Prezime")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Adresa je obavezna!")]
         [StringLength(150, MinimumLength = 2)]
         [Display(Name ="Adresa")]
         public string Address { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Email adresa je obavezna!")]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Telefon je obavezan!")]
         [StringLength(150, MinimumLength = 5)]
         [Display(Name ="Broj telefona")]
         public string Phone { get; set; }

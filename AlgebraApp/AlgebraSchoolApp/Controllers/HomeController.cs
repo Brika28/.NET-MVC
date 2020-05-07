@@ -15,13 +15,13 @@ namespace AlgebraSchoolApp.Controllers
     {
         private CoursesRepo cr = new CoursesRepo();
 
-        public ActionResult Index(string searchString, DateTime? date)
+        public ActionResult Index(string searchString)
         {
             IEnumerable<Course> courses = cr.GetCourses();
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                courses = courses.Where(c => c.CourseName.Contains(searchString));
+                courses = courses.Where(c => c.CourseName.ToLower().Contains(searchString.ToLower()));
             }
 
             return View(courses);

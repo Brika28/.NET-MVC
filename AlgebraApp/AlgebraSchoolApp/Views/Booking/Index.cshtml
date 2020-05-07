@@ -6,7 +6,17 @@
 }
 
 <h2>Rezervacije</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Pretraga: @Html.TextBox("SearchString")
+        <input type="submit" value="Traži" class="btn btn-primary" />
+        <input type="button" class="btn btn-primary" value="Reset" onclick="location.href='@Url.Action("Index", "Booking")'" />
+    </p>
+}
 
+
+<h2>Upisani polaznici</h2>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -40,7 +50,47 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Where(x => x.Status == "Upisan"))
+        {
+                var date = item.DateOfBooking.ToString("dd/MM/yyyy");
+                <tr>
+                    <td>
+                        @Html.ActionLink("Uredi", "Edit", new { id = item.BookingId })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.CourseName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<h2>Odbijeni polaznici</h2>
+
+<table class="table table-striped table-bordered">
+    <tbody>
+        @foreach (var item in Model.Where(x => x.Status == "Odbijen"))
         {
             var date = item.DateOfBooking.ToString("dd/MM/yyyy");
             <tr>
@@ -72,6 +122,48 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
             </tr>
+
+        }
+    </tbody>
+</table>
+
+<h2>Na čekanju</h2>
+
+<table class="table table-striped table-bordered">
+    <tbody>
+        @foreach (var item in Model.Where(x => x.Status == null))
+        {
+            var date = item.DateOfBooking.ToString("dd/MM/yyyy");
+            <tr>
+                <td>
+                    @Html.ActionLink("Uredi", "Edit", new { id = item.BookingId })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            </tr>
+
         }
     </tbody>
 </table>

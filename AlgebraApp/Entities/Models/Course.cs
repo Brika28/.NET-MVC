@@ -12,12 +12,12 @@ namespace Entities
         [Key]
         public int CourseId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Naziv tečaja je obavezan!")]
         [StringLength(150, MinimumLength = 3)]
         [Display(Name = "Naziv tečaja")]
         public string CourseName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Opis je obavezan!")]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Opis")]
         public string Description { get; set; }
