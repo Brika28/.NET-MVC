@@ -25,9 +25,11 @@ namespace AlgebraSchoolApp.Models
         [Display(Name ="Ime")]
         public string FirstName { get; set; }
 
+
         [Display(Name ="Prezime")]
         public string LastName { get; set; }
 
+   
         [Display(Name ="Korisničko ime")]
         public override string UserName { get; set; }
     }

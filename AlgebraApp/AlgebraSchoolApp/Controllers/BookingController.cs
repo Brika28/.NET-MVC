@@ -20,9 +20,17 @@ namespace AlgebraSchoolApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private BookingsRepo br = new BookingsRepo();
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Bookings.Include(x => x.Course));
+
+            IEnumerable<Booking> bookings = db.Bookings.Include(c => c.Course).ToList(); ;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                bookings = bookings.Where(b => b.Status.ToLower().Contains(searchString.ToLower()));
+            }
+
+            return View(bookings);
         }
         [AllowAnonymous]
         [HttpGet]

@@ -50,11 +50,11 @@ namespace AlgebraSchoolApp.Models
     public class LoginViewModel
     {
 
-        [Required]
+        [Required(ErrorMessage ="Email je obavezan!")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Lozinka je obavezna!")]
         [DataType(DataType.Password)]
         [Display(Name = "Lozinka")]
         public string Password { get; set; }
@@ -64,21 +64,21 @@ namespace AlgebraSchoolApp.Models
     public class RegisterViewModel
     {
 
-        [Required]
+        [Required(ErrorMessage ="Ime je obavezno!")]
         [Display(Name = "Ime")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Prezime je obavezno!")]
         [Display(Name = "Prezime")]
         public string LastName { get; set; }
 
-        [Required]
+
+        [Required(ErrorMessage = "Email adresa je obavezna!")]
         [EmailAddress]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
-
-        [Required]
+        [Required(ErrorMessage = "Lozinka je obavezna!")]
         [StringLength(100, ErrorMessage = " {0} mora bit {2} znaka duga.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Lozinka")]
